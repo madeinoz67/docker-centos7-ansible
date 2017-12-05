@@ -1,8 +1,8 @@
-# CentOS 7.x Ansible Test Image
+# CentOS 7.x Ansible CI Test Image
 
 [![Docker Automated build](https://img.shields.io/docker/automated/shireofdardanup/centos7-ci.svg?maxAge=2592000)](https://hub.docker.com/r/shireofdardanup/centos7-ci/)
 
-CentOS 7.x Docker container for Ansible playbook, role and Prometheus configuration testing.
+CentOS 7.x Docker container for Ansible playbook, role and Prometheus configuration testing.  Ansible-lint is also installed to check ansible playbook files for best practice.
 
 ## How to Build
 
@@ -23,6 +23,9 @@ This image is built on Docker Hub automatically any time the upstream OS contain
   5. Use Promtool inside the container: [Prometheus Alert Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
     a. `docker exec --tty [container_id] env TERM=xterm /prometheus/promtool --version`
     b. `docker exec --tty [container_id] env TERM=xterm /prometheus/promtool check rules /path/to/alert.rule`
+  6. Use ansible-lint inside the container
+    a. `docker exec --tty [container_id] env TERM=xterm ansible-lint --version`
+    b. `docker exec --tty [container_id] env TERM=xterm ansible-lint /path/to/playbook.yml`
 
 ## Notes
 
@@ -36,5 +39,6 @@ This container is also used to test [Prometheus](https://prometheus.io) configur
 
 ## Author
 
-Prometheus Promtool added in 2017 by Stephen Eaton seaton@dardanup.wa.gov.au
+Prometheus Promtool and ansible-lint added in 2017 by Stephen Eaton seaton@dardanup.wa.gov.au
+
 Original Image Created in 2016 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
