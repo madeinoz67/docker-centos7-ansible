@@ -1,6 +1,7 @@
 # CentOS 7.x Ansible CI Test Image
 
 [![Docker Automated build](https://img.shields.io/docker/automated/shireofdardanup/centos7-ci.svg?maxAge=2592000)](https://hub.docker.com/r/shireofdardanup/centos7-ci/)
+[![Build Status](https://travis-ci.org/madeinoz67/docker-centos7-ansible.svg?branch=master)](https://travis-ci.org/madeinoz67/docker-centos7-ansible)
 
 CentOS 7.x Docker container for Ansible playbook, role and Prometheus configuration testing.  Ansible-lint is also installed to check ansible playbook files for best practice.
 
