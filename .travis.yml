@@ -26,3 +26,6 @@ script:
 
   # verify promtool is available
   - docker exec --tty test-container env TERM=xterm /prometheus/promtool --version
+
+  # verify ansible-lint is available
+  - docker exec --tty test-container env TERM=xterm ansible-lint --version
