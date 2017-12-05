@@ -1,5 +1,5 @@
 FROM centos:7
-LABEL maintainer="Stephen Eaton"
+LABEL maintainer="Stephen Eaton - seaton@dardanup.wa.gov.au"
 ENV container=docker
 ENV PROMETHEUS_VERSION 2.0.0
 
@@ -22,7 +22,10 @@ RUN yum makecache fast \
       ansible \
       sudo \
       which \
+      python-pip \
  && yum clean all
+
+RUN pip install ansible-lint
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
@@ -30,7 +33,7 @@ RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 # Install Ansible inventory file.
 RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 
-# get prometheus release and install promtool 
+# get prometheus release and install promtool
 RUN yum install -y wget
 RUN wget -O prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v$PROMETHEUS_VERSION/prometheus-$PROMETHEUS_VERSION.linux-amd64.tar.gz
 RUN mkdir /prometheus
