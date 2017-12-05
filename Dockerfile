@@ -1,6 +1,7 @@
 FROM centos:7
-LABEL maintainer="Jeff Geerling"
+LABEL maintainer="Stephen Eaton"
 ENV container=docker
+ENV PROMETHEUS_VERSION 2.0.0
 
 # Install systemd -- See https://hub.docker.com/_/centos/
 RUN yum -y update; yum clean all; \
@@ -28,6 +29,12 @@ RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
 # Install Ansible inventory file.
 RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+
+# get prometheus release and install promtool
+RUN yum install -y wget
+RUN wget -O prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v$PROMETHEUS_VERSION/prometheus-$PROMETHEUS_VERSION.linux-amd64.tar.gz
+RUN mkdir /prometheus
+RUN tar -xvf prometheus.tar.gz -C /prometheus --strip-components 1 --wildcards */promtool
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/usr/sbin/init"]

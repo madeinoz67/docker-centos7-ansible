@@ -2,7 +2,7 @@
 
 [![Docker Automated build](https://img.shields.io/docker/automated/geerlingguy/docker-centos7-ansible.svg?maxAge=2592000)](https://hub.docker.com/r/geerlingguy/docker-centos7-ansible/)
 
-CentOS 7.x Docker container for Ansible playbook and role testing.
+CentOS 7.x Docker container for Ansible playbook, role and Prometheus alert file testing.
 
 ## How to Build
 
@@ -29,4 +29,5 @@ I use Docker to test my Ansible roles and playbooks on multiple OSes using CI to
 
 ## Author
 
-Created in 2016 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+Promtool added in 2017 by seaton@dardanup.wa.gov.au
+Original Image Created in 2016 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
